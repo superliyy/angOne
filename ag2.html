@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="angular/angular.js"></script>
+	</head>
+	
+	
+	<body>
+		<!-- ng-app定义了angular的作用范围，如果有名字，会从js中找到对应的作用module -->
+		<!-- ng-app只能存在一个 -->
+		<div ng-app="myApp">
+			<input type="text" ng-model="val" />
+			
+			{{val}}
+			
+			{{fun(3,4)}}
+		
+		</div>
+		
+		<hr />
+		
+		<div ng-app="myApp2">
+			<input type="text" ng-model="val" />
+			
+			{{val}}
+			
+		</div>
+		
+		
+		<script>
+			//创建module
+			//参数1：名字
+			//参数2：依赖注入
+			var app = angular.module('myApp', []);
+			
+			//app启动会执行的方法
+			//防止压缩代码，$rootScope不能使用了：
+			//run( [ ...变量的字符串, function(...变量的字符串){}  ] )
+			app.run(['$rootScope', function(q){
+				//$rootScope指该app模型作用dom结构的作用域
+				
+				//定义属性
+				q.val = 'hello world';
+				
+				//定义方法
+				q.fun = function(a,b){
+					return a*b;
+				}
+				
+				console.log('app run.....');
+			}])
+			
+			
+			var app2 = angular.module('myApp2', []);
+			app2.run(['$rootScope', function($rootScope){
+				$rootScope.val = 'hi';
+				console.log('app2 run.....');
+				
+			}])
+			
+		</script>
+		
+	</body>
+</html>

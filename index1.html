@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Bootstrap Demo</title>
+
+    <link href="boot-dist/css/bootstrap.css" rel="stylesheet">
+	<script src="boot-dist/js/jquery.min.js"></script>
+    <script src="boot-dist/js/bootstrap.js"></script>
+    
+	<!-- 兼容ie -->
+    <!--[if lt IE 9]>
+      <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <style>
+    	.box, .row>div{
+    		height: 100px;
+    		background: red;
+    		box-sizing: border-box;
+    		border: 1px solid #ddd;
+    	}
+    	.box1{
+    		height: 30px;
+    		background: yellow;
+    		box-sizing: border-box;
+    		border: 1px solid #ddd;
+    	}
+    	/*
+    	 * 屏幕大小              box大小
+    	 300px- 500px    100px
+		 500px- 800px    200px
+		 >800px          300px
+    	 * */
+    	
+    	
+    	/*@media only screen and (min-width: 300px) and (max-width: 500px) {
+    		.box{
+    			width: 100px;
+    		}
+    	}
+    	@media only screen and (min-width: 500px) and (max-width: 800px) {
+    		.box{
+    			width: 200px;
+    		}
+    	}
+    	@media only screen and (min-width: 800px) {
+    		.box{
+    			width: 300px;
+    		}
+    	}*/
+    	
+    	/*
+    	 <768      xs
+    	 768-992   sm
+    	 992-1200  md
+    	 >1200     lg
+    	 * */
+    	
+    	.wrapper{
+    		height: 100px;
+    		width: 100%;
+    		display: flex;
+    	}
+    	.wrapper .box2{
+    		flex: 1;
+    		box-sizing: border-box;
+    		border: 1px solid #ddd;
+    	}
+    	.wrapper .box2:nth-of-type(1){
+    		order: 1;
+    	}
+    	.wrapper .box2:nth-of-type(4){
+    		order: -1;
+    	}
+    </style>
+    
+    
+    
+  </head>
+  
+  <body>
+    <!--<div class="box col-lg-2 col-md-3 col-sm-4 col-xs-6">2</div>
+    <div class="box col-lg-2 col-md-3 col-sm-4 col-xs-6">2</div>
+    <div class="box col-lg-2 col-md-3 col-sm-4 col-xs-6">2</div>
+    <div class="box col-lg-2 col-md-3 col-sm-4 col-xs-6">2</div>
+    <div class="box col-lg-2 col-md-3 col-sm-4 col-xs-6">2</div>
+    <div class="box col-lg-2 col-md-3 col-sm-4 col-xs-6">2</div>-->
+	<div class="wrapper">
+		<div class="box2">1</div>
+		<div class="box2">2</div>
+		<div class="box2">3</div>
+		<div class="box2">4</div>
+	</div>
+
+  <div class="box col-lg-6 col-md-3 col-sm-4 col-xs-6 col-lg-offset-5 col-md-offset-4">
+  	
+  	<div class="box1 col-lg-3"></div>
+  	<div class="box1 col-lg-3"></div>
+  	<div class="box1 col-lg-3"></div>
+  	<div class="box1 col-lg-3"></div>
+  	
+  </div>
+  
+  <div class="row">
+	  <div class="col-md-2 col-md-push-10">.col-md-9 .col-md-push-3</div>
+	  <div class="col-md-3 col-md-pull-9">.col-md-3 .col-md-pull-9</div>
+  </div>
+    
+  </body>
+</html> 

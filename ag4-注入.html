@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="angular/angular.js"></script>
+	</head>
+	
+	
+	<body>
+		<div ng-app="myApp">
+			
+			{{text}}
+			
+			<button ng-click="btnAction()">按钮</button>
+			
+			<div ng-controller="oneCtrl">
+				{{val}}
+				{{text}}
+			</div>
+			
+			<hr />
+			
+			<div ng-controller="twoCtrl">
+				{{val}}
+				{{text}}
+				<button ng-click="btnAction()">按钮</button>
+			</div>
+			
+			<div ng-controller="testCtrl">
+				{{val}}
+			</div>
+			
+		</div>
+		
+		
+		<script>
+			var app1 = angular.module('app_one', []);
+			app1.controller('testCtrl', ['$scope', function($scope){
+				console.log('testCtrl init......');
+				$scope.val = 'test val';
+				
+				
+			}])
+			
+			//app_one模型注入给了myApp，那么app_one的所有内容，myApp都能够使用
+			var app = angular.module('myApp', ['app_one']);
+			
+			app.run(['$rootScope', function($rootScope){
+				$rootScope.text = '千锋教育';
+				
+				$rootScope.btnAction = function(){
+					console.log('按钮点击了');
+				}
+			}])
+			
+			
+			//创建控制器
+			//参数1：控制器名字
+			//参数2：控制器的实现
+			app.controller('oneCtrl', ['$scope', '$rootScope', function($scope, $rootScope){
+				$scope.val = 'hello';
+				$scope.text = '123';
+				
+			}])
+			
+			
+			
+			app.controller('twoCtrl', ['$scope', function($scope){
+				$scope.val = 'world';
+				
+				$scope.btnAction = function(){
+					console.log('第二个控制器的按钮点击了')
+				}
+				
+			}])
+			
+			
+		</script>
+		
+	</body>
+</html>

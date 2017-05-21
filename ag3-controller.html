@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="angular/angular.js"></script>
+	</head>
+	
+	
+	<body>
+		<div ng-app="myApp">
+			
+			{{text}}
+			
+			<div ng-controller="oneCtrl">
+				{{val}}
+				{{text}}
+			</div>
+			
+			<hr />
+			
+			<div ng-controller="twoCtrl">
+				{{val}}
+				{{text}}
+			</div>
+			
+		</div>
+		
+		
+		<script>
+			//创建module
+			//参数1：名字
+			//参数2：依赖注入
+			var app = angular.module('myApp', []);
+			
+			app.run(['$rootScope', function($rootScope){
+				$rootScope.text = '千锋教育';
+				console.log('app run.....');
+				
+			}])
+			
+			
+			//创建控制器
+			//参数1：控制器名字
+			//参数2：控制器的实现
+			app.controller('oneCtrl', ['$scope', '$rootScope', function($scope, $rootScope){
+				$scope.val = 'hello';
+				$scope.text = '123';
+				console.log($rootScope.text)
+				console.log('oneCtrl init....');
+				
+			}])
+			
+			app.controller('twoCtrl', ['$scope', function($scope){
+				$scope.val = 'world';
+				console.log('twoCtrl init....');
+				
+				
+			}])
+			
+			
+		</script>
+		
+	</body>
+</html>
